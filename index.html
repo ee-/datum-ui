@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datum UI — Component Reference</title>
+  <meta name="description" content="Visual reference and component library for Datum UI, built on Tailwind CSS v4.1.">
+  <!-- Fonts: self-hosted in src/fonts/ via @font-face in style.css -->
+  <script type="module" src="/src/main.js"></script>
+</head>
+
+<body class="bg-grid antialiased text-text">
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+
+    <!-- ═══════════════════════════════════════════════
+         PAGE HEADER
+         ═══════════════════════════════════════════════ -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-end pb-4 mb-12">
+      <div>
+        <p class="font-mono text-sm text-text-secondary mb-1">v1.0 — Tailwind CSS v4.1</p>
+        <h1 class="text-4xl font-bold uppercase tracking-tight">Datum UI <span class="highlight-strong">Framework</span>
+        </h1>
+      </div>
+      <div class="flex items-center gap-4 mt-4 md:mt-0">
+        <nav class="hidden md:flex gap-6 flex-wrap items-center">
+          <div class="flex gap-3">
+            <a href="#colors"
+              class="font-mono text-sm text-text-secondary hover:text-primary transition-colors">Colors</a>
+            <a href="#typography"
+              class="font-mono text-sm text-text-secondary hover:text-primary transition-colors">Type</a>
+          </div>
+          <div class="flex gap-3">
+            <a href="#components"
+              class="font-mono text-sm text-text-secondary hover:text-primary transition-colors">Primitives</a>
+            <a href="#composites"
+              class="font-mono text-sm text-text-secondary hover:text-primary transition-colors">Composites</a>
+          </div>
+          <div class="flex gap-3">
+            <a href="#snippets"
+              class="font-mono text-sm text-text-secondary hover:text-primary transition-colors">Snippets</a>
+            <a href="#dos-donts"
+              class="font-mono text-sm text-text-secondary hover:text-primary transition-colors">Do/Don't</a>
+          </div>
+        </nav>
+        <button id="nav-toggle" class="md:hidden btn-ghost !px-2 !py-1 text-lg" aria-label="Open navigation"
+          onclick="document.getElementById('side-nav').classList.remove('translate-x-full')">☰</button>
+      </div>
+    </header>
+
+    <!-- ═══ Side Nav (mobile) ═══ -->
+    <div id="side-nav" class="fixed inset-0 z-50 translate-x-full transition-transform duration-300 md:hidden">
+      <div class="absolute inset-0 bg-black/40"
+        onclick="document.getElementById('side-nav').classList.add('translate-x-full')"></div>
+      <nav
+        class="absolute top-0 right-0 h-full w-64 bg-surface border-l border-border-strong p-6 flex flex-col gap-1 overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+          <p class="font-mono text-xs text-text-secondary uppercase tracking-widest">Navigation</p>
+          <button class="text-text-secondary hover:text-primary text-lg"
+            onclick="document.getElementById('side-nav').classList.add('translate-x-full')"
+            aria-label="Close navigation">✕</button>
+        </div>
+        <a href="#colors" onclick="document.getElementById('side-nav').classList.add('translate-x-full')"
+          class="font-mono text-sm text-text-secondary hover:text-primary py-2 border-b border-border transition-colors">Colors</a>
+        <a href="#typography" onclick="document.getElementById('side-nav').classList.add('translate-x-full')"
+          class="font-mono text-sm text-text-secondary hover:text-primary py-2 border-b border-border transition-colors">Typography</a>
+        <div class="mt-3"></div>
+        <a href="#components" onclick="document.getElementById('side-nav').classList.add('translate-x-full')"
+          class="font-mono text-sm text-text-secondary hover:text-primary py-2 border-b border-border transition-colors">Primitives</a>
+        <a href="#composites" onclick="document.getElementById('side-nav').classList.add('translate-x-full')"
+          class="font-mono text-sm text-text-secondary hover:text-primary py-2 border-b border-border transition-colors">Composites</a>
+        <div class="mt-3"></div>
+        <a href="#snippets" onclick="document.getElementById('side-nav').classList.add('translate-x-full')"
+          class="font-mono text-sm text-text-secondary hover:text-primary py-2 border-b border-border transition-colors">Snippets</a>
+        <a href="#dos-donts" onclick="document.getElementById('side-nav').classList.add('translate-x-full')"
+          class="font-mono text-sm text-text-secondary hover:text-primary py-2 transition-colors">Do / Don't</a>
+      </nav>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         GROUP: FOUNDATION
+         ═══════════════════════════════════════════════ -->
+    <div class="section-divider" id="foundation">
+      <span class="font-mono text-sm font-bold uppercase tracking-widest text-text-secondary">Foundation</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: DESIGN IDENTITY
+         ═══════════════════════════════════════════════ -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Design Identity</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card-datum">
+          <p class="font-mono text-sm text-text-secondary mb-1">01</p>
+          <p class="font-semibold uppercase tracking-wide text-sm">Clarity over Clutter</p>
+          <p class="text-sm text-text-secondary mt-2">Every element earns its space. Data density with functional
+            whitespace.</p>
+        </div>
+        <div class="card-datum">
+          <p class="font-mono text-sm text-text-secondary mb-1">02</p>
+          <p class="font-semibold uppercase tracking-wide text-sm">Geometric Precision</p>
+          <p class="text-sm text-text-secondary mt-2">Sharp edges, chamfered corners, deliberate alignment. No organic
+            curves.</p>
+        </div>
+        <div class="card-datum">
+          <p class="font-mono text-sm text-text-secondary mb-1">03</p>
+          <p class="font-semibold uppercase tracking-wide text-sm">Industrial Contrast</p>
+          <p class="text-sm text-text-secondary mt-2">Mustard accents against charcoal on off-white. Small, intentional
+            palette.</p>
+        </div>
+        <div class="card-datum">
+          <p class="font-mono text-sm text-text-secondary mb-1">04</p>
+          <p class="font-semibold uppercase tracking-wide text-sm">Flat & Borderline</p>
+          <p class="text-sm text-text-secondary mt-2">No drop shadows. Depth via crisp 1px borders and background tints
+            only.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: COLOR PALETTE
+         ═══════════════════════════════════════════════ -->
+    <section id="colors" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Color Palette</h2>
+
+      <!-- Core Colors -->
+      <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Surfaces</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="card-datum">
+          <div class="h-16 bg-base border border-border mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-base</p>
+          <p class="font-mono text-sm">#F8F9FA</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-base-alt border border-border mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-base-alt</p>
+          <p class="font-mono text-sm">#F1F3F5</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-surface border border-border mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-surface</p>
+          <p class="font-mono text-sm">#FFFFFF</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-text mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-text</p>
+          <p class="font-mono text-sm">#212529</p>
+        </div>
+      </div>
+
+      <!-- Accent Colors -->
+      <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Accent & Interactive</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="card-datum">
+          <div class="h-16 bg-primary mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-primary</p>
+          <p class="font-mono text-sm">#FFB800</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-primary-hover mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-primary-hover</p>
+          <p class="font-mono text-sm">#E6A800</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-primary-muted border border-border mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-primary-muted</p>
+          <p class="font-mono text-sm">#FFB80026</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-border mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-border</p>
+          <p class="font-mono text-sm">#DEE2E6</p>
+        </div>
+      </div>
+
+      <!-- Status Colors -->
+      <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Status</h3>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="card-datum">
+          <div class="h-16 bg-status-active mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-status-active</p>
+          <p class="font-mono text-sm">#16A34A</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-status-stopped mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-status-stopped</p>
+          <p class="font-mono text-sm">#DC2626</p>
+        </div>
+        <div class="card-datum">
+          <div class="h-16 bg-status-pending mb-3"></div>
+          <p class="font-mono text-xs text-text-secondary">--color-status-pending</p>
+          <p class="font-mono text-sm">#FFB800</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: TYPOGRAPHY
+         ═══════════════════════════════════════════════ -->
+    <section id="typography" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Typography</h2>
+
+      <div class="card-datum space-y-8">
+        <!-- Page Title -->
+        <div class="border-b border-border pb-6">
+          <p class="font-mono text-xs text-text-secondary mb-2">Page Title — text-4xl font-bold uppercase tracking-tight
+          </p>
+          <p class="text-4xl font-bold uppercase tracking-tight">System Overview</p>
+        </div>
+
+        <!-- Section Heading -->
+        <div class="border-b border-border pb-6">
+          <p class="font-mono text-xs text-text-secondary mb-2">Section Heading — text-2xl font-bold uppercase
+            tracking-tight</p>
+          <p class="text-2xl font-bold uppercase tracking-tight">Active Deployments</p>
+        </div>
+
+        <!-- Card Title -->
+        <div class="border-b border-border pb-6">
+          <p class="font-mono text-xs text-text-secondary mb-2">Card Title — text-lg font-semibold uppercase
+            tracking-wide</p>
+          <p class="text-lg font-semibold uppercase tracking-wide">Node Configuration</p>
+        </div>
+
+        <!-- Body -->
+        <div class="border-b border-border pb-6">
+          <p class="font-mono text-xs text-text-secondary mb-2">Body — text-base leading-relaxed text-text</p>
+          <p class="text-base leading-relaxed text-text max-w-prose">All subsystems are operating within nominal
+            parameters. The primary reactor is stable at 98.7% efficiency with a projected maintenance window in 14
+            days. Cooling subsystem alpha is running at 72% capacity with thermal output within expected bounds.</p>
+        </div>
+
+        <!-- Body (long-form) -->
+        <div class="border-b border-border pb-6">
+          <p class="font-mono text-xs text-text-secondary mb-2">Body Long-Form — text-base leading-relaxed text-text
+            max-w-prose</p>
+          <p class="text-base leading-relaxed text-text max-w-prose">When deploying across multiple availability zones,
+            ensure each gateway node has an independent health-check endpoint. Failover latency should remain under 50ms
+            for tier-one services. Monitor the distributed consensus layer for split-brain conditions during network
+            partitions.</p>
+        </div>
+
+        <!-- Small / Caption -->
+        <div class="border-b border-border pb-6">
+          <p class="font-mono text-xs text-text-secondary mb-2">Caption — text-sm text-text-secondary</p>
+          <p class="text-sm text-text-secondary">Last updated 2026-02-18T10:30:00Z · Refresh interval: 30s</p>
+        </div>
+
+        <!-- Monospaced Data -->
+        <div>
+          <p class="font-mono text-xs text-text-secondary mb-2">Monospaced Data — font-mono text-sm</p>
+          <p class="font-mono text-sm">192.168.1.1 → 10.0.0.1:8443 · RTT 12ms · TLS 1.3</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         GROUP: COMPONENTS
+         ═══════════════════════════════════════════════ -->
+    <div class="section-divider">
+      <span class="font-mono text-sm font-bold uppercase tracking-widest text-text-secondary">Components</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: PRIMITIVES
+         ═══════════════════════════════════════════════ -->
+    <section id="components" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Primitives</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- ── Cards ── -->
+        <div>
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Blueprint Cards</h3>
+          <div class="space-y-4">
+            <div class="card-datum">
+              <p class="font-mono text-xs text-text-secondary mb-1">Static Card</p>
+              <p class="text-lg font-semibold uppercase tracking-wide">card-datum</p>
+              <p class="text-sm text-text-secondary mt-2">Flat container with a 10px chamfered bottom-left corner. No
+                shadows, no border-radius.</p>
+            </div>
+            <div class="card-datum-interactive">
+              <p class="font-mono text-xs text-text-secondary mb-1">Interactive Card — hover me</p>
+              <p class="text-lg font-semibold uppercase tracking-wide">card-datum-interactive</p>
+              <p class="text-sm text-text-secondary mt-2">Same chamfer, but border turns mustard on hover. For clickable
+                surfaces.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Buttons ── -->
+        <div>
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Buttons</h3>
+          <div class="card-datum space-y-6">
+            <div>
+              <p class="font-mono text-xs text-text-secondary mb-3">Primary — btn-primary</p>
+              <div class="flex flex-wrap gap-3 items-center">
+                <button class="btn-primary">Deploy Now</button>
+                <button class="btn-primary" disabled>Disabled</button>
+              </div>
+            </div>
+            <div>
+              <p class="font-mono text-xs text-text-secondary mb-3">Ghost — btn-ghost</p>
+              <div class="flex flex-wrap gap-3 items-center">
+                <button class="btn-ghost">Cancel</button>
+                <button class="btn-ghost">View Details</button>
+              </div>
+            </div>
+            <div>
+              <p class="font-mono text-xs text-text-secondary mb-3">Combo</p>
+              <div class="flex flex-wrap gap-3 items-center">
+                <button class="btn-primary">Confirm</button>
+                <button class="btn-ghost">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Status Indicators ── -->
+        <div>
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Status Indicators</h3>
+          <div class="card-datum space-y-3">
+            <p class="font-mono text-xs text-text-secondary mb-2">font-mono text-sm + status color</p>
+            <div class="flex flex-wrap gap-4">
+              <span class="font-mono text-sm text-status-active">[ACTIVE]</span>
+              <span class="font-mono text-sm text-status-stopped">[STOPPED]</span>
+              <span class="font-mono text-sm text-status-pending">[PENDING]</span>
+            </div>
+            <p class="text-sm text-text-secondary mt-2">Always monospaced, always in square brackets.</p>
+          </div>
+        </div>
+
+        <!-- ── Badges ── -->
+        <div>
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Badges / Tags</h3>
+          <div class="card-datum space-y-4">
+            <div>
+              <p class="font-mono text-xs text-text-secondary mb-3">Default — badge</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge">DNS</span>
+                <span class="badge">Firewall</span>
+                <span class="badge">VPN</span>
+                <span class="badge">TCP/IP</span>
+              </div>
+            </div>
+            <div>
+              <p class="font-mono text-xs text-text-secondary mb-3">Primary — badge-primary</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge-primary">Active</span>
+                <span class="badge-primary">Featured</span>
+                <span class="badge-primary">New</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Text Highlighter ── -->
+        <div>
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Text Highlighter</h3>
+          <div class="card-datum">
+            <p class="font-mono text-xs text-text-secondary mb-3">highlight</p>
+            <p class="text-base leading-relaxed">
+              The reactor core is operating at <span class="highlight">CRITICAL</span> capacity.
+              All personnel must report to their <span class="highlight">designated stations</span> immediately.
+              This is a <span class="highlight">priority one</span> alert.
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Tooltips ── -->
+        <div>
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Tooltips</h3>
+          <div class="card-datum">
+            <p class="font-mono text-xs text-text-secondary mb-3">tooltip-datum</p>
+            <div class="flex flex-wrap gap-4 items-start">
+              <div class="relative inline-block group">
+                <button class="btn-ghost" aria-describedby="tooltip-demo">Hover here</button>
+                <div id="tooltip-demo" role="tooltip"
+                  class="tooltip-datum absolute left-0 bottom-full mb-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
+                  Tooltip with mustard border
+                </div>
+              </div>
+              <div class="tooltip-datum inline-block">
+                Static tooltip preview
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Form Inputs ── -->
+        <div class="lg:col-span-2">
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-4">Form Inputs</h3>
+          <div class="card-datum">
+            <p class="font-mono text-xs text-text-secondary mb-4">input-datum</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-sm font-semibold uppercase tracking-wide mb-2">Hostname</label>
+                <input type="text" class="input-datum" placeholder="node-01.local">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold uppercase tracking-wide mb-2">Port</label>
+                <input type="text" class="input-datum" placeholder="8443">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold uppercase tracking-wide mb-2">Protocol</label>
+                <input type="text" class="input-datum" placeholder="TCP / UDP">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: COMPOSITES
+         ═══════════════════════════════════════════════ -->
+    <div id="composites" class="mb-8">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-2">Composites</h2>
+      <p class="text-sm text-text-secondary leading-relaxed">Higher-order patterns built from primitives.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: MODAL
+         ═══════════════════════════════════════════════ -->
+    <section id="modal" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Modal</h2>
+
+      <div class="card-datum">
+        <p class="font-mono text-xs text-text-secondary mb-4">modal-overlay + modal-datum + modal-close</p>
+        <p class="text-sm text-text-secondary leading-relaxed mb-4">Click the button below to open an interactive modal
+          dialog. Uses the Datum UI chamfered shape and flat borders.</p>
+        <button class="btn-primary" onclick="document.getElementById('demo-modal').classList.remove('hidden')">Open
+          Modal</button>
+      </div>
+
+      <!-- Modal overlay (hidden by default) -->
+      <div id="demo-modal" class="modal-overlay hidden" onclick="if(event.target===this)this.classList.add('hidden')">
+        <div class="modal-datum">
+          <button class="modal-close" onclick="document.getElementById('demo-modal').classList.add('hidden')"
+            aria-label="Close modal">✕</button>
+          <h3 class="text-lg font-semibold uppercase tracking-wide mb-2">Confirm Deployment</h3>
+          <p class="text-sm text-text-secondary leading-relaxed mb-1">You are about to deploy <span
+              class="font-mono text-text highlight">node-03.prod</span> to the production cluster.</p>
+          <p class="text-sm text-text-secondary leading-relaxed mb-6">This action cannot be undone. All active
+            connections will be drained before cutover.</p>
+          <div class="flex gap-3 justify-end">
+            <button class="btn-ghost"
+              onclick="document.getElementById('demo-modal').classList.add('hidden')">Cancel</button>
+            <button class="btn-primary" onclick="document.getElementById('demo-modal').classList.add('hidden')">Deploy
+              Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: PROGRESS BAR
+         ═══════════════════════════════════════════════ -->
+    <section id="progress" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Progress Bar</h2>
+
+      <div class="card-datum space-y-6">
+        <p class="font-mono text-xs text-text-secondary">progress-track + progress-fill</p>
+
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-semibold uppercase tracking-wide">Deployment</span>
+              <span class="font-mono text-xs text-text-secondary">25%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 25%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-semibold uppercase tracking-wide">Data Sync</span>
+              <span class="font-mono text-xs text-text-secondary">50%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 50%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-semibold uppercase tracking-wide">Health Check</span>
+              <span class="font-mono text-xs text-text-secondary">75%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 75%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-sm font-semibold uppercase tracking-wide">Complete</span>
+              <span class="font-mono text-xs text-text-secondary">100%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive demo -->
+        <div class="border-t border-border pt-4">
+          <p class="text-sm text-text-secondary mb-3">Interactive — click buttons to change fill level:</p>
+          <div class="flex gap-2 mb-3">
+            <button class="btn-ghost text-xs"
+              onclick="document.getElementById('demo-progress').style.width='0%'; document.getElementById('demo-pct').textContent='0%'">0%</button>
+            <button class="btn-ghost text-xs"
+              onclick="document.getElementById('demo-progress').style.width='33%'; document.getElementById('demo-pct').textContent='33%'">33%</button>
+            <button class="btn-ghost text-xs"
+              onclick="document.getElementById('demo-progress').style.width='66%'; document.getElementById('demo-pct').textContent='66%'">66%</button>
+            <button class="btn-primary text-xs"
+              onclick="document.getElementById('demo-progress').style.width='100%'; document.getElementById('demo-pct').textContent='100%'">100%</button>
+          </div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-semibold uppercase tracking-wide">Upload Progress</span>
+            <span id="demo-pct" class="font-mono text-xs text-text-secondary">0%</span>
+          </div>
+          <div class="progress-track">
+            <div id="demo-progress" class="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: VERTICAL TIMELINE
+         ═══════════════════════════════════════════════ -->
+    <section id="timeline" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Vertical Timeline</h2>
+
+      <div class="card-datum">
+        <p class="font-mono text-xs text-text-secondary mb-6">timeline-datum + timeline-node</p>
+
+        <div class="timeline-datum">
+          <div class="timeline-node-done">
+            <p class="text-sm font-semibold uppercase tracking-wide">System Initialized</p>
+            <p class="font-mono text-xs text-text-secondary mt-1">2026-02-18 08:00:00 UTC</p>
+            <p class="text-sm text-text-secondary mt-2 leading-relaxed">Core services bootstrapped. Database connections
+              established to primary and replica nodes.</p>
+          </div>
+
+          <div class="timeline-node-done">
+            <p class="text-sm font-semibold uppercase tracking-wide">Configuration Loaded</p>
+            <p class="font-mono text-xs text-text-secondary mt-1">2026-02-18 08:00:12 UTC</p>
+            <p class="text-sm text-text-secondary mt-2 leading-relaxed">Environment variables parsed. Feature flags:
+              <span class="highlight">canary_routing=true</span>, <span class="highlight">rate_limit=500/min</span>.
+            </p>
+          </div>
+
+          <div class="timeline-node-active">
+            <p class="text-sm font-semibold uppercase tracking-wide text-primary">Rolling Deployment</p>
+            <p class="font-mono text-xs text-text-secondary mt-1">2026-02-18 08:01:30 UTC — In Progress</p>
+            <p class="text-sm text-text-secondary mt-2 leading-relaxed">Deploying <span
+                class="font-mono highlight">v2.4.1</span> across 3 regions. Currently at <span
+                class="font-mono font-semibold">2/3</span> complete.</p>
+            <div class="mt-2">
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 66%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-node">
+            <p class="text-sm font-semibold uppercase tracking-wide text-text-secondary">Health Verification</p>
+            <p class="font-mono text-xs text-text-secondary mt-1">Pending</p>
+            <p class="text-sm text-text-secondary mt-2 leading-relaxed">Automated health checks on all endpoints.
+              Expected duration: ~2 minutes.</p>
+          </div>
+
+          <div class="timeline-node" style="padding-bottom: 0">
+            <p class="text-sm font-semibold uppercase tracking-wide text-text-secondary">DNS Cutover</p>
+            <p class="font-mono text-xs text-text-secondary mt-1">Scheduled</p>
+            <p class="text-sm text-text-secondary mt-2 leading-relaxed">Update A records to point to new deployment.
+              TTL: 60s.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: DATE PICKER
+         ═══════════════════════════════════════════════ -->
+    <section id="datepicker" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Date Picker</h2>
+
+      <div class="calendar-datum">
+        <div class="calendar-header">
+          <button class="calendar-nav-btn">←</button>
+          <span class="font-bold tracking-wide">FEBRUARY 2026</span>
+          <button class="calendar-nav-btn">→</button>
+        </div>
+        <div class="calendar-grid">
+          <!-- Heads -->
+          <div class="calendar-day-head">Su</div>
+          <div class="calendar-day-head">Mo</div>
+          <div class="calendar-day-head">Tu</div>
+          <div class="calendar-day-head">We</div>
+          <div class="calendar-day-head">Th</div>
+          <div class="calendar-day-head">Fr</div>
+          <div class="calendar-day-head">Sa</div>
+
+          <!-- Week 1 -->
+          <div class="calendar-day calendar-day-disabled">26</div>
+          <div class="calendar-day calendar-day-disabled">27</div>
+          <div class="calendar-day calendar-day-disabled">28</div>
+          <div class="calendar-day calendar-day-disabled">29</div>
+          <div class="calendar-day calendar-day-disabled">30</div>
+          <div class="calendar-day calendar-day-disabled">31</div>
+          <div class="calendar-day">1</div>
+
+          <!-- Week 2 -->
+          <div class="calendar-day">2</div>
+          <div class="calendar-day">3</div>
+          <div class="calendar-day">4</div>
+          <div class="calendar-day">5</div>
+          <div class="calendar-day">6</div>
+          <div class="calendar-day">7</div>
+          <div class="calendar-day">8</div>
+
+          <!-- Week 3 -->
+          <div class="calendar-day">9</div>
+          <div class="calendar-day">10</div>
+          <div class="calendar-day">11</div>
+          <div class="calendar-day">12</div>
+          <div class="calendar-day">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+
+          <!-- Week 4 -->
+          <div class="calendar-day">16</div>
+          <div class="calendar-day">17</div>
+          <div class="calendar-day calendar-day-active">18</div>
+          <div class="calendar-day">19</div>
+          <div class="calendar-day">20</div>
+          <div class="calendar-day">21</div>
+          <div class="calendar-day">22</div>
+
+          <!-- Week 5 -->
+          <div class="calendar-day">23</div>
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+          <div class="calendar-day">27</div>
+          <div class="calendar-day">28</div>
+          <div class="calendar-day calendar-day-disabled">1</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: DATA TABLE
+         ═══════════════════════════════════════════════ -->
+    <section id="table" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Data Table</h2>
+      <div class="card-datum overflow-x-auto !p-0">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-base-alt border-b border-border">
+              <th class="p-3 text-left text-sm font-semibold uppercase tracking-wide text-text-secondary">Node</th>
+              <th class="p-3 text-left text-sm font-semibold uppercase tracking-wide text-text-secondary">IP Address
+              </th>
+              <th class="p-3 text-left text-sm font-semibold uppercase tracking-wide text-text-secondary">Region</th>
+              <th class="p-3 text-right text-sm font-semibold uppercase tracking-wide text-text-secondary">Latency</th>
+              <th class="p-3 text-left text-sm font-semibold uppercase tracking-wide text-text-secondary">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border transition-colors hover:bg-base-alt">
+              <td class="p-3 font-mono text-sm">gateway-us-east-01</td>
+              <td class="p-3 font-mono text-sm">10.0.1.12</td>
+              <td class="p-3 font-mono text-sm">US-EAST-1</td>
+              <td class="p-3 font-mono text-sm text-right">4ms</td>
+              <td class="p-3"><span class="font-mono text-sm text-status-active">[ACTIVE]</span></td>
+            </tr>
+            <tr class="border-b border-border transition-colors hover:bg-base-alt">
+              <td class="p-3 font-mono text-sm">gateway-eu-west-02</td>
+              <td class="p-3 font-mono text-sm">10.0.2.34</td>
+              <td class="p-3 font-mono text-sm">EU-WEST-1</td>
+              <td class="p-3 font-mono text-sm text-right">28ms</td>
+              <td class="p-3"><span class="font-mono text-sm text-status-active">[ACTIVE]</span></td>
+            </tr>
+            <tr class="border-b border-border transition-colors hover:bg-base-alt">
+              <td class="p-3 font-mono text-sm">gateway-ap-south-01</td>
+              <td class="p-3 font-mono text-sm">10.0.3.56</td>
+              <td class="p-3 font-mono text-sm">AP-SOUTH-1</td>
+              <td class="p-3 font-mono text-sm text-right">142ms</td>
+              <td class="p-3"><span class="font-mono text-sm text-status-pending">[PENDING]</span></td>
+            </tr>
+            <tr class="border-b border-border transition-colors hover:bg-base-alt">
+              <td class="p-3 font-mono text-sm">gateway-us-west-03</td>
+              <td class="p-3 font-mono text-sm">10.0.4.78</td>
+              <td class="p-3 font-mono text-sm">US-WEST-2</td>
+              <td class="p-3 font-mono text-sm text-right">—</td>
+              <td class="p-3"><span class="font-mono text-sm text-status-stopped">[STOPPED]</span></td>
+            </tr>
+            <tr class="transition-colors hover:bg-base-alt">
+              <td class="p-3 font-mono text-sm">gateway-eu-north-01</td>
+              <td class="p-3 font-mono text-sm">10.0.5.90</td>
+              <td class="p-3 font-mono text-sm">EU-NORTH-1</td>
+              <td class="p-3 font-mono text-sm text-right">31ms</td>
+              <td class="p-3"><span class="font-mono text-sm text-status-active">[ACTIVE]</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: PAGE HEADER DEMO
+         ═══════════════════════════════════════════════ -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Page Header Pattern</h2>
+      <div class="card-datum !p-0 overflow-hidden">
+        <div class="p-6 bg-base">
+          <header class="flex flex-col sm:flex-row justify-between items-start sm:items-end pb-4">
+            <h1 class="text-3xl font-bold uppercase tracking-tight">Network Dashboard</h1>
+            <div class="flex gap-3 mt-3 sm:mt-0">
+              <button class="btn-primary">Add Node</button>
+              <button class="btn-ghost">Export</button>
+            </div>
+          </header>
+          <p class="font-mono text-sm text-text-secondary mt-12">↑ Clean header pattern: whitespace separation,
+            baseline-aligned actions</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         GROUP: REFERENCE
+         ═══════════════════════════════════════════════ -->
+    <div class="section-divider">
+      <span class="font-mono text-sm font-bold uppercase tracking-widest text-text-secondary">Reference</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: USAGE REFERENCE
+         ═══════════════════════════════════════════════ -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-6">Quick Usage Reference</h2>
+      <div class="card-datum overflow-x-auto !p-0">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-base-alt border-b border-border">
+              <th class="p-3 text-left text-sm font-semibold uppercase tracking-wide text-text-secondary">Element</th>
+              <th class="p-3 text-left text-sm font-semibold uppercase tracking-wide text-text-secondary">Class /
+                Utility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Page background</td>
+              <td class="p-3 font-mono text-sm">bg-grid antialiased</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Container</td>
+              <td class="p-3 font-mono text-sm">max-w-7xl mx-auto px-6</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Card</td>
+              <td class="p-3 font-mono text-sm">card-datum</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Card (clickable)</td>
+              <td class="p-3 font-mono text-sm">card-datum-interactive</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Primary button</td>
+              <td class="p-3 font-mono text-sm">btn-primary</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Ghost button</td>
+              <td class="p-3 font-mono text-sm">btn-ghost</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Text input</td>
+              <td class="p-3 font-mono text-sm">input-datum</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Tooltip</td>
+              <td class="p-3 font-mono text-sm">tooltip-datum</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Badge (default)</td>
+              <td class="p-3 font-mono text-sm">badge</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Badge (accent)</td>
+              <td class="p-3 font-mono text-sm">badge-primary</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Highlight</td>
+              <td class="p-3 font-mono text-sm">highlight</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Heading</td>
+              <td class="p-3 font-mono text-sm">text-2xl font-bold uppercase tracking-tight</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Data value</td>
+              <td class="p-3 font-mono text-sm">font-mono text-sm</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="p-3 text-sm">Status active</td>
+              <td class="p-3 font-mono text-sm">font-mono text-sm text-status-active</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: CODE SNIPPETS
+         ═══════════════════════════════════════════════ -->
+    <section id="snippets" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-2">Copy-Paste Snippets</h2>
+      <p class="text-sm text-text-secondary mb-6 leading-relaxed max-w-prose">Ready-to-use HTML patterns. Code on top,
+        live preview below.</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Snippet: Card with title + badge -->
+        <div class="card-datum space-y-3">
+          <p class="font-mono text-xs text-text-secondary">Card with title, body, and badge</p>
+          <pre class="font-mono text-xs text-text bg-base-alt p-4 overflow-x-auto border border-border leading-relaxed"><code>&lt;div class="card-datum"&gt;
+  &lt;div class="flex justify-between items-start mb-3"&gt;
+    &lt;h3 class="text-lg font-semibold uppercase tracking-wide"&gt;
+      Service Name
+    &lt;/h3&gt;
+    &lt;span class="badge-primary"&gt;Active&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="text-sm text-text-secondary leading-relaxed"&gt;
+    Description text goes here.
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <div class="pt-3 border-t border-border">
+            <p class="font-mono text-xs text-text-secondary mb-2">Live preview ↓</p>
+            <div class="card-datum">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-lg font-semibold uppercase tracking-wide">Auth Service</h3>
+                <span class="badge-primary">Active</span>
+              </div>
+              <p class="text-sm text-text-secondary leading-relaxed">OAuth 2.0 / OIDC identity provider with refresh
+                token rotation and device flow support.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Snippet: Button Group -->
+        <div class="card-datum space-y-3">
+          <p class="font-mono text-xs text-text-secondary">Button group pattern</p>
+          <pre class="font-mono text-xs text-text bg-base-alt p-4 overflow-x-auto border border-border leading-relaxed"><code>&lt;div class="flex gap-3"&gt;
+  &lt;button class="btn-primary"&gt;Save Changes&lt;/button&gt;
+  &lt;button class="btn-ghost"&gt;Discard&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          <div class="pt-3 border-t border-border">
+            <p class="font-mono text-xs text-text-secondary mb-2">Live preview ↓</p>
+            <div class="flex gap-3">
+              <button class="btn-primary">Save Changes</button>
+              <button class="btn-ghost">Discard</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Snippet: Data row with status -->
+        <div class="card-datum space-y-3">
+          <p class="font-mono text-xs text-text-secondary">Inline data rows with status</p>
+          <pre class="font-mono text-xs text-text bg-base-alt p-4 overflow-x-auto border border-border leading-relaxed"><code>&lt;div class="flex justify-between items-center
+  p-3 border-b border-border"&gt;
+  &lt;span class="font-mono text-sm"&gt;node-03&lt;/span&gt;
+  &lt;span class="font-mono text-sm
+    text-status-active"&gt;[ACTIVE]&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          <div class="pt-3 border-t border-border">
+            <p class="font-mono text-xs text-text-secondary mb-2">Live preview ↓</p>
+            <div class="border border-border bg-surface">
+              <div class="flex justify-between items-center p-3 border-b border-border">
+                <span class="font-mono text-sm">node-01.prod</span>
+                <span class="font-mono text-sm text-status-active">[ACTIVE]</span>
+              </div>
+              <div class="flex justify-between items-center p-3 border-b border-border">
+                <span class="font-mono text-sm">node-02.staging</span>
+                <span class="font-mono text-sm text-status-pending">[PENDING]</span>
+              </div>
+              <div class="flex justify-between items-center p-3">
+                <span class="font-mono text-sm">node-03.dev</span>
+                <span class="font-mono text-sm text-status-stopped">[STOPPED]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Snippet: Form field -->
+        <div class="card-datum space-y-3">
+          <p class="font-mono text-xs text-text-secondary">Form field with helper text</p>
+          <pre class="font-mono text-xs text-text bg-base-alt p-4 overflow-x-auto border border-border leading-relaxed"><code>&lt;div&gt;
+  &lt;label class="block text-sm font-semibold
+    uppercase tracking-wide mb-2"&gt;
+    Field Label
+  &lt;/label&gt;
+  &lt;input type="text" class="input-datum"
+    placeholder="Value"&gt;
+  &lt;p class="text-xs text-text-secondary mt-1"&gt;
+    Helper text.
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          <div class="pt-3 border-t border-border">
+            <p class="font-mono text-xs text-text-secondary mb-2">Live preview ↓</p>
+            <div>
+              <label class="block text-sm font-semibold uppercase tracking-wide mb-2">Endpoint URL</label>
+              <input type="text" class="input-datum" placeholder="https://api.example.com/v1">
+              <p class="text-xs text-text-secondary mt-1">The base URL for API calls. Must include protocol.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Snippet: Modal dialog -->
+        <div class="card-datum space-y-3">
+          <p class="font-mono text-xs text-text-secondary">Modal dialog pattern</p>
+          <pre class="font-mono text-xs text-text bg-base-alt p-4 overflow-x-auto border border-border leading-relaxed"><code>&lt;div class="modal-overlay"&gt;
+  &lt;div class="modal-datum"&gt;
+    &lt;button class="modal-close"&gt;✕&lt;/button&gt;
+    &lt;h3 class="text-lg font-semibold
+      uppercase tracking-wide mb-2"&gt;
+      Title
+    &lt;/h3&gt;
+    &lt;p class="text-sm text-text-secondary
+      leading-relaxed mb-6"&gt;Body text.&lt;/p&gt;
+    &lt;div class="flex gap-3 justify-end"&gt;
+      &lt;button class="btn-ghost"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn-primary"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          <div class="pt-3 border-t border-border">
+            <p class="font-mono text-xs text-text-secondary mb-2">Live preview ↓</p>
+            <button class="btn-primary" onclick="document.getElementById('demo-modal').classList.remove('hidden')">Open
+              Modal Demo</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SECTION: DO / DON'T
+         ═══════════════════════════════════════════════ -->
+    <section id="dos-donts" class="mb-16">
+      <h2 class="text-2xl font-bold uppercase tracking-tight mb-2">Do / Don't</h2>
+      <p class="text-sm text-text-secondary mb-6 leading-relaxed max-w-prose">Design guardrails. Follow these to stay
+        on-brand.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- DO -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span
+              class="inline-flex items-center justify-center w-7 h-7 bg-status-active text-white font-bold text-sm">✓</span>
+            <h3 class="text-lg font-semibold uppercase tracking-wide">Do</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong>Use chamfered clip-path</strong> on cards and
+                buttons. This is the signature shape of the system.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong>Use font-mono for data</strong>. Numbers, IPs,
+                timestamps, and technical identifiers should always be monospaced.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong>Use flat 1px borders</strong> for depth. Never use
+                box-shadow on cards. The only exception is tooltips.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong>Uppercase all headings</strong> with tight tracking.
+                This creates the industrial feel.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong>Use leading-relaxed</strong> for body text to ensure
+                readability on dense pages.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DON'T -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span
+              class="inline-flex items-center justify-center w-7 h-7 bg-status-stopped text-white font-bold text-sm">✗</span>
+            <h3 class="text-lg font-semibold uppercase tracking-wide">Don't</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong class="text-status-stopped">No rounded
+                  corners.</strong> Never use rounded-lg, rounded-full, or border-radius. The chamfer IS the shape
+                language.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong class="text-status-stopped">No box-shadows on
+                  cards.</strong> This system is deliberately flat. Use border-border for separation.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong class="text-status-stopped">No default Tailwind
+                  colors.</strong> Never use bg-blue-500, text-red-500 etc. Use only the named tokens.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong class="text-status-stopped">No bouncy
+                  animations.</strong> Transitions are mechanical — ease-standard, 150ms. No spring or bounce.</p>
+            </div>
+            <div class="card-datum">
+              <p class="text-sm leading-relaxed text-text"><strong class="text-status-stopped">No gradients on
+                  surfaces.</strong> Backgrounds are flat solid fills. The dot grid is the only texture.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════ -->
+    <footer
+      class="border-t border-border pt-6 pb-12 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <p class="font-mono text-sm text-text-secondary">Datum UI Framework · Tailwind CSS v4.1</p>
+      <div class="flex gap-3">
+        <span class="badge">HTML</span>
+        <span class="badge">CSS</span>
+        <span class="badge-primary">v4.1</span>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
