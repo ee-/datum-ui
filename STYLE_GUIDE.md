@@ -127,12 +127,12 @@ A subtle dot grid gives the page a "graph paper" texture — central to the blue
 
 ---
 
-### 5.2 Blueprint Card
+### 5.2 Datum Card
 
 The defining UI element. A flat white container with a chamfered (technical-cut) bottom-left corner.
 
 ```css
-@utility card-blueprint {
+@utility card-datum {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   padding: 1rem;
@@ -151,7 +151,7 @@ The defining UI element. A flat white container with a chamfered (technical-cut)
 **Hover variant** (optional):
 
 ```css
-@utility card-blueprint-interactive {
+@utility card-datum-interactive {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   padding: 1rem;
@@ -169,7 +169,7 @@ The defining UI element. A flat white container with a chamfered (technical-cut)
 }
 ```
 
-**Usage**: `<div class="card-blueprint">...</div>`
+**Usage**: `<div class="card-datum">...</div>`
 
 **Design rules**:
 - No `border-radius` — the chamfer IS the border treatment.
@@ -331,7 +331,7 @@ Clean, minimal header with whitespace separation.
 High-contrast, sharp-edged tooltips for contextual information.
 
 ```css
-@utility tooltip-blueprint {
+@utility tooltip-datum {
   background-color: var(--color-text);
   color: white;
   font-size: 0.875rem;
@@ -349,7 +349,7 @@ High-contrast, sharp-edged tooltips for contextual information.
 Flat inputs consistent with the blueprint aesthetic.
 
 ```css
-@utility input-blueprint {
+@utility input-datum {
   width: 100%;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -501,8 +501,8 @@ Small, flat labels for categorization.
   background-size: 20px 20px;
 }
 
-/* ──────────────── Blueprint Card ──────────────── */
-@utility card-blueprint {
+/* ──────────────── Datum Card ──────────────── */
+@utility card-datum {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   padding: 1rem;
@@ -510,7 +510,7 @@ Small, flat labels for categorization.
   clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px));
 }
 
-@utility card-blueprint-interactive {
+@utility card-datum-interactive {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   padding: 1rem;
@@ -581,7 +581,7 @@ Small, flat labels for categorization.
 }
 
 /* ──────────────── Tooltip ──────────────── */
-@utility tooltip-blueprint {
+@utility tooltip-datum {
   background-color: var(--color-text);
   color: white;
   font-size: 0.875rem;
@@ -591,7 +591,7 @@ Small, flat labels for categorization.
 }
 
 /* ──────────────── Form Input ──────────────── */
-@utility input-blueprint {
+@utility input-datum {
   width: 100%;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -661,12 +661,12 @@ Small, flat labels for categorization.
 ```
 STRUCTURE:          max-w-7xl mx-auto px-6
 PAGE BACKGROUND:    bg-grid antialiased
-CARD:               card-blueprint
-CARD (INTERACTIVE): card-blueprint-interactive
+CARD:               card-datum
+CARD (INTERACTIVE): card-datum-interactive
 BUTTON PRIMARY:     btn-primary
 BUTTON SECONDARY:   btn-ghost
-INPUT:              input-blueprint
-TOOLTIP:            tooltip-blueprint
+INPUT:              input-datum
+TOOLTIP:            tooltip-datum
 BADGE:              badge | badge-primary
 HIGHLIGHT:          highlight
 HEADING:            text-2xl font-bold uppercase tracking-tight text-text
