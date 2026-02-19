@@ -6,72 +6,66 @@ Industrial-flat design system built on **Tailwind CSS v4.1** using the CSS-first
 
 **Fonts:** Inter (body/headings) + JetBrains Mono (data/code) — self-hosted as woff2, no CDN.
 
-## Quick Start
+## Quick Start (CSS-First)
 
-### Use in a new project
+Datum UI is designed to be consumed as a CSS-first dependency in a Tailwind v4 project.
 
-1. **Install dependencies**
+### 1. Install
 
 ```bash
-pnpm add tailwindcss @tailwindcss/vite
+pnpm add datum-ui
 ```
 
-2. **Copy the theme file** — `src/style.css` is the entire design system. Copy it into your project and import it in your entry point:
+### 2. Import
 
-```js
-// main.js / main.ts
-import './style.css';
+Add the following to your main CSS entry point after `@import "tailwindcss";`:
+
+```css
+@import "tailwindcss";
+@import "datum-ui";
 ```
 
-3. **Configure Vite** (if using Vite):
+### 3. Usage
 
-```js
-// vite.config.js
-import tailwindcss from "@tailwindcss/vite";
-export default { plugins: [tailwindcss()] };
-```
-
-4. **Start building.** Fonts are bundled in `style.css` via `@font-face` — no `<link>` tags needed.
-
-> **Note:** The `src/fonts/` directory contains Inter and JetBrains Mono woff2 files. Make sure to copy this directory along with `style.css`.
+The project includes self-hosted fonts (Inter & JetBrains Mono) packaged via `@font-face`. No external `<link>` tags are required.
 
 ---
 
 ## For AI Agents
 
-> **Read order:** This README first → `src/style.css` for all tokens and utilities → `STYLE_GUIDE.md` only if you need full design rationale.
+> **Read order:** This README first → `STYLE_GUIDE.md` for full design rationale → `index.html` for implementation reference.
 
 ### Files to read
 
 | File | What it contains | When to read |
 |:---|:---|:---|
-| `src/style.css` | All `@theme` tokens and `@utility` component classes | **Always** — this is the source of truth |
-| `STYLE_GUIDE.md` | Full design spec, rationale, and anti-patterns | When you need context on *why* a rule exists |
+| `STYLE_GUIDE.md` | Full design spec, rationale, and anti-patterns | **Always** — this is the source of truth |
+| `src/style.css` | Raw `@theme` tokens and `@utility` implementations | When debugging or extending |
 | `index.html` | Live demo page with every component | Reference for complex patterns |
 
 ### 5 Non-Negotiable Rules
 
 1. **No `border-radius`.** Use `clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px))` for the chamfered bottom-left corner. This is the signature shape.
-2. **No `box-shadow` on cards or containers.** Use `border: 1px solid var(--color-border)` for depth. The only exception is `tooltip-blueprint`.
+2. **No `box-shadow` on cards or containers.** Use `border: 1px solid var(--color-border)` for depth. The only exception is `tooltip-datum`.
 3. **Use only named color tokens.** Never use `bg-blue-500`, `text-red-500`, or any default Tailwind palette. Only `primary`, `base`, `surface`, `text`, `text-secondary`, `border`, `border-strong`, `status-active`, `status-stopped`, `status-pending`.
 4. **Headings are always `uppercase tracking-tight font-bold`.** Data values use `font-mono text-sm`.
 5. **Transitions are 150ms with `ease-standard`.** No spring, bounce, or elastic easings.
 
 ### Available Custom Classes
 
-These are defined as `@utility` in `style.css` and can be used directly in HTML:
+These are defined as `@utility` and automatically available when importing `datum-ui`:
 
 ```
-card-blueprint              — flat container, 1px border, chamfered bottom-left
-card-blueprint-interactive  — same + border turns mustard on hover
+card-datum                  — flat container, 1px border, chamfered bottom-left
+card-datum-interactive      — same + border turns mustard on hover + focus ring
 btn-primary                 — mustard background, chamfered, uppercase
 btn-ghost                   — transparent, 1px border, chamfered
-input-blueprint             — monospaced input, mustard focus border
+input-datum                 — monospaced input, mustard focus border
 badge                       — small monospaced tag, neutral border
 badge-primary               — same with mustard border + tinted background
 highlight                   — inline mustard underline + tinted background
 highlight-strong            — solid mustard background, bold accent
-tooltip-blueprint           — dark bg, mustard border, shadow (only exception)
+tooltip-datum               — dark bg, mustard border, shadow (only exception)
 bg-grid                     — dot grid page background
 modal-overlay               — fullscreen dark semi-transparent backdrop
 modal-datum                 — chamfered dialog panel (max-width 28rem)
@@ -88,16 +82,16 @@ timeline-node-active        — current step (mustard fill + glow ring)
 ### Color Tokens (use with Tailwind classes like `bg-primary`, `text-text`)
 
 ```
-primary         #FFB800    — mustard accent (buttons, borders, highlights)
+primary         #FFB800    — mustard accent (buttons, highlights)
 primary-hover   #E6A800    — darker mustard for hover states
-primary-muted   #FFB80026  — 15% opacity mustard for badge backgrounds
+primary-muted   #FFB80026  — 15% opacity mustard (badges, rings)
 base            #F8F9FA    — page background
-base-alt        #F1F3F5    — alternate surface (table headers, code blocks)
-surface         #FFFFFF    — card / container backgrounds
-text            #212529    — primary body text (charcoal)
+base-alt        #F1F3F5    — alternate surface (table headers, code)
+surface         #FFFFFF    — card backgrounds
+text            #212529    — primary charcoal text
 text-secondary  #6C757D    — captions, labels, metadata
-border          #DEE2E6    — standard 1px borders
-border-strong   #212529    — heavy 2px separators (page headers, footers)
+border          #DEE2E6    — standard borders
+border-strong   #212529    — heavy separators
 status-active   #16A34A    — green for [ACTIVE]
 status-stopped  #DC2626    — red for [STOPPED]
 status-pending  #FFB800    — yellow for [PENDING]
@@ -107,7 +101,7 @@ status-pending  #FFB800    — yellow for [PENDING]
 
 **Card with title + badge:**
 ```html
-<div class="card-blueprint">
+<div class="card-datum-interactive" tabindex="0">
   <div class="flex justify-between items-start mb-3">
     <h3 class="text-lg font-semibold uppercase tracking-wide">Title</h3>
     <span class="badge-primary">Status</span>
@@ -127,14 +121,6 @@ status-pending  #FFB800    — yellow for [PENDING]
 **Status indicator:**
 ```html
 <span class="font-mono text-sm text-status-active">[ACTIVE]</span>
-```
-
-**Page header:**
-```html
-<header class="flex justify-between items-end pb-4 mb-8">
-  <h1 class="text-3xl font-bold uppercase tracking-tight">Page Title</h1>
-  <button class="btn-primary">Action</button>
-</header>
 ```
 
 **Body text (always include `leading-relaxed` for readability):**

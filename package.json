@@ -1,17 +1,39 @@
 {
   "name": "datum-ui",
-  "private": true,
   "version": "1.0.0",
+  "description": "A high-performance, industrial-aesthetic UI framework built on Tailwind CSS v4.1.",
+  "main": "src/style.css",
   "type": "module",
+  "exports": {
+    ".": "./src/style.css",
+    "./fonts/*": "./src/fonts/*"
+  },
+  "files": [
+    "src/style.css",
+    "src/fonts"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
+  "keywords": [
+    "ui",
+    "framework",
+    "tailwind",
+    "css-only",
+    "minimalist",
+    "industrial"
+  ],
+  "author": "Tianyou Wang",
+  "license": "MIT",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"
     ]
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=4.0.0"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
